@@ -141,3 +141,27 @@
 ## v0.8.1
 
 * Added order fields
+
+## v0.8.2
+
+* Fixed seller id attribute when items search
+
+## v0.8.3
+
+* Added attributes to item entity
+
+## v0.8.4
+
+* Added method to get seller by nickname
+
+## v0.8.5
+
+* Improved method to get seller by nickname
+
+## v0.8.6
+
+* Added method to get item description
+
+## v0.8.7
+
+* Bugfix on method to get item description
