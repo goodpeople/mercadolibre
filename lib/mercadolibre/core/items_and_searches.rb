@@ -193,6 +193,14 @@ module Mercadolibre
         put_request("/items/#{item_id}?access_token=#{@access_token}", payload, headers)[:body]
       end
 
+      def update_variations_fields(item_id, variation_id, attribs)
+        payload = attribs.to_json
+
+        headers = { content_type: :json, accept: :json }
+
+        put_request("/items/#{item_id}/variations/#{variation_id}?access_token=#{@access_token}", payload, headers)[:body]
+      end
+
       def update_item_listing_type(item_id, listing_type_id)
         payload = { id: listing_type_id }.to_json
 
