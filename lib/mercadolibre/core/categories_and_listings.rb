@@ -53,6 +53,13 @@ module Mercadolibre
 
         Mercadolibre::Entity::Category.new(result[:body])
       end
+
+      def predict_category(site_id, product_title)
+
+        result = get_request("/sites/#{site_id}/category_predictor/predict", { title: product_title })
+
+        result[:body]
+      end
     end
   end
 end
