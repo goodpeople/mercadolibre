@@ -168,7 +168,11 @@ module Mercadolibre
 
         result = post_request("/items/validate?access_token=#{@access_token}", payload, headers)
 
-        (result[:status_code].to_s == '204')
+        unless (valid = result[:status_code].to_s == '204')
+          @errors = result[:body]
+        end
+
+        valid
       end
 
       def create_item(attribs)

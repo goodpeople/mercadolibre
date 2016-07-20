@@ -1,6 +1,6 @@
 module Mercadolibre
   class Api
-    attr_accessor :access_token
+    attr_accessor :access_token, :errors
 
     def initialize(args={})
       @app_key = args[:app_key]
@@ -11,6 +11,7 @@ module Mercadolibre
       @endpoint_url = 'https://api.mercadolibre.com'
       @auth_url = 'https://auth.mercadolibre.com.ar'
       @debug = args[:debug]
+      @errors = {}
     end
 
     include Mercadolibre::Core::Auth
