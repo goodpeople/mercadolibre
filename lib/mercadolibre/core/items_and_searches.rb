@@ -122,7 +122,7 @@ module Mercadolibre
 
       def get_item_descriptions(item_id)
         results = get_request("/items/#{item_id}/descriptions")
-        return "" if results[:body]["status"] == 404
+        return "" if !results[:body].is_a?(Array) && results[:body]["status"] == 404
         results[:body].map { |r| Mercadolibre::Entity::ItemDescription.new(r) }
       end
 
