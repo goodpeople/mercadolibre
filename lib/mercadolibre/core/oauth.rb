@@ -25,6 +25,19 @@ module Mercadolibre
         response.body
       end
 
+      def generate_access_token
+        response = post_request('/oauth/token', {
+          grant_type: 'client_credentials',
+          client_id: @app_key,
+          client_secret: @app_secret
+        })
+
+        @access_token = response.body.access_token
+
+        response.body.expired_at = response.body.expires_in.to_i.seconds.from_now
+        response.body
+      end
+
       def update_token(refresh_token)
         response = post_request('/oauth/token', {
           grant_type: 'refresh_token',
