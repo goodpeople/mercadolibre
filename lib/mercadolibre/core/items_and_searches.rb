@@ -27,10 +27,14 @@ module Mercadolibre
 
         while (has_results && (pages_remaining != 0)) do
           partial_results = get_request("/users/#{user_id}/items/search", filters)[:body]['results']
-          results += partial_results
-          has_results = partial_results.any?
-          filters[:offset] += 50
-          pages_remaining -= 1
+          if partial_results.present?
+            results += partial_results
+            has_results = partial_results.any?
+            filters[:offset] += 50
+            pages_remaining -= 1
+          else
+            has_results = false
+          end
         end
 
         results
